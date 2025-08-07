@@ -1,0 +1,48 @@
+<mvc:View controllerName="basic.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.f"
+    xmlns="sap.m">
+
+    <layout:DynamicPage id="createPage" showFooter="true" fitContent="false">
+        <layout:title>
+            <layout:DynamicPageTitle>
+                <layout:heading>
+                    <HBox alignItems="Center">
+                        <Button icon="sap-icon://nav-back" press="onNavBack" type="Transparent"/>
+                        <Title id="pageTitle" class="sapUiTinyMarginBegin"/>
+                    </HBox>
+                </layout:heading>
+                <layout:actions>
+                    <MenuButton 
+                        text="Change View" 
+                        icon="sap-icon://menu2"
+                        id="menuButton"
+                        >
+                        <menu>
+                            <Menu itemSelected="onMenuItemSelected" id="changeViewMenu">
+                                <items>
+                                    <MenuItem id="menuProject" text="Project"/>
+                                    <MenuItem id="menuProjectMembers" text="Project Members"/>
+                                    <MenuItem id="menuTask" text="Task"/>
+                                    <MenuItem id="menuProjectBudget" text="Project Budget"/>
+                                </items>
+                            </Menu>
+                        </menu>
+                    </MenuButton>
+                </layout:actions>
+            </layout:DynamicPageTitle>
+        </layout:title>
+
+        <layout:content>
+            <VBox id="formContainer" class="sapUiSmallMargin"/>
+        </layout:content>
+
+        <layout:footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button text="Save" type="Emphasized" press="onSave"/>
+                <Button text="Clear" type="Transparent" press="clearForm"></Button>
+            </Toolbar>
+        </layout:footer>
+    </layout:DynamicPage>
+</mvc:View>

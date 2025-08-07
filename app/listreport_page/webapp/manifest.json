@@ -1,0 +1,207 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "listreportpage",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.18.3",
+      "toolsId": "c82a7ae8-c7c5-4e37-87ff-af8e60c72df7"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/project/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.138.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {},
+        "sap.fe.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "listreportpage.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "PROJECTList",
+          "target": "PROJECTList"
+        },
+        {
+          "pattern": "PROJECT({key}):?query:",
+          "name": "PROJECTObjectPage",
+          "target": "PROJECTObjectPage"
+        }
+      ],
+      "targets": {
+        "PROJECTList": {
+          "type": "Component",
+          "id": "PROJECTList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/PROJECT",
+              "variantManagement": "Page",
+              "navigation": {
+                "PROJECT": {
+                  "detail": {
+                    "route": "PROJECTObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  },
+                  "actions": {
+                    "buttonId1": {
+                      "press": "listreportpage.ext.controller.View.buttonFunction",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Create"
+                    }
+                  }
+                },
+                "/PROJECT_BUDGET/@com.sap.vocabularies.UI.v1.LineItem#tableView": {
+                  "actions": {
+                    "buttonId2": {
+                      "press": "listreportpage.ext.controller.View.buttonFunction",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Create"
+                    }
+                  }
+                },
+                "/TASK/@com.sap.vocabularies.UI.v1.LineItem#tableView": {
+                  "actions": {
+                    "buttonId3": {
+                      "press": "listreportpage.ext.controller.View.buttonFunction",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Create"
+                    }
+                  }
+                },
+                "/PROJECT_MEMBERS/@com.sap.vocabularies.UI.v1.LineItem#tableView": {
+                  "actions": {
+                    "buttonId4": {
+                      "press": "listreportpage.ext.controller.View.buttonFunction",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Create"
+                    }
+                  }
+                }
+              },
+              "views": {
+                "paths": [
+                  {
+                    "key": "tableView",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView"
+                  },
+                  {
+                    "key": "tableView1",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView",
+                    "entitySet": "PROJECT_BUDGET"
+                  },
+                  {
+                    "key": "tableView2",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView",
+                    "entitySet": "TASK"
+                  },
+                  {
+                    "key": "tableView3",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView",
+                    "entitySet": "PROJECT_MEMBERS"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "PROJECTObjectPage": {
+          "type": "Component",
+          "id": "PROJECTObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/PROJECT"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

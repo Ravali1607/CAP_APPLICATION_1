@@ -1,0 +1,44 @@
+{
+  "name": "application_1",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.15.2",
+    "@cap-js/hana": "^2",
+    "@sap/cds": "^9",
+    "@sap/xssec": "^4",
+    "express": "^4"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.13.0",
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": ">=8"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-list_report": "cds watch --open list_report/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-basic_template": "cds watch --open basic_template/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-basic": "cds watch --open basic/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-listreport_page": "cds watch --open listreport_page/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-custom_page": "cds watch --open custom_page/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "requires": {
+      "[production]": {
+        "auth": "xsuaa"
+      },
+      "html5-runtime": true,
+      "db": "hana"
+    }
+  },
+  "sapux": [
+    "app/listreport_page",
+    "app/custom_page"
+  ]
+}

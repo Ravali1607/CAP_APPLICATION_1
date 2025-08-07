@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" core:require="{handler:'listreportpage/ext/controller/View'}">
+    <Dialog id="createDialog" title="Select Tab" class="sapUiResponsivePadding">
+        <content>
+            <VBox>
+                <Text text="Please select one tab:" class="sapUiSmallMargin"/>
+                
+                <RadioButtonGroup id="tabSelector" columns="1" select="handler.onRadioSelect">
+                    <buttons>
+                        <RadioButton text="Project" id="Tab1" />
+                        <RadioButton text="Project Members" id="Tab2" />
+                        <RadioButton text="Task" id="Tab3" />
+                        <RadioButton text="Project Budget" id="Tab4" />
+                    </buttons>
+                </RadioButtonGroup>
+            </VBox>
+        </content>
+        <beginButton>
+            <Button text="Proceed" press="handler.onDialogProceed" />
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" press="handler.onDialogCancel" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>
